@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>bootstrap baidu map picker</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./css/font-awesome/font-awesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="./js/html5shiv.min.js"></script>
+    <script src="./js/respond.min.js"></script>
+    <![endif]-->
+	<style type="text/css">
+		.select-modal-map {
+		    width: 100%;
+		    height: 500px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" role="main">
+		<div class="row">
+			<label for="lnglat_read">仅查看</label>
+			<input type="text" class="form-control" name="lnglat_read" data-lat=0 data-lng=0 readonly placeholder="单击设置坐标点">
+			<label for="lnglat_rw">可编辑</label>
+			<input type="text" class="form-control" name="lnglat_rw" data-lat=0 data-lng=0 readonly placeholder="单击设置坐标点">
+		</div>
+
+		<div id="div-map-select" class="modal" style="z-index:10000">
+		    <div class="modal-dialog modal-map-dialog" style="width:800px;">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		                <h4 class="modal-title"></h4>
+		            </div>
+		            <div class="modal-body">
+		                <div class="row">
+		                    <div class="map-header"></div>
+		                    <div class="map-container" >
+		                        <div class="select-modal-map" id="select-modal-map"></div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</div>
+
+	<script type="text/template" id="map_select_template">
+	    <!--<input type="text" class="form-control map-address" placeholder="检索地点">
+	    <input type="button" class="btn btn-primary map-address-search" value="检索" />-->
+	    <input type="button" class="btn btn-primary set-map-location" value="设置坐标点" />
+	</script>
+
+	<script src="http://api.map.baidu.com/api?v=2.0&s=1&ak=GGTQBCpsjlF8DUkmHGgxMXyV"></script>
+	<!-- jQuery 2.1.4 -->
+    <script src="./js/jQuery/jQuery-2.1.4.min.js"></script>
+	<!-- Bootstrap 3.3.5 -->
+	<script src="./js/bootstrap/bootstrap.min.js"></script>
+	<script src="./js/underscore.js"></script>
+	<script src="./js/map-select.js"></script>
+	<script type="text/javascript">
+		$("input[name='lnglat_read']").mapSelect({
+	        title: "查看坐标点",
+	        readonly: 1,
+	        callback: function() {
+	        }
+	    });
+		$("input[name='lnglat_rw']").mapSelect({
+	        title: "设置坐标点",
+	        callback: function() {
+	        }
+	    });
+	</script>
+</body>
+</html>
