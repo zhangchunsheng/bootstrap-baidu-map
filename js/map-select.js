@@ -25,6 +25,10 @@
         }
         selectModalMap.addOverlay(marker);
     }
+    function picker(e) {
+        addMarker(e.point, true);
+        selectModalMap.panTo(e.point);
+    }
     var target = null;
 
     $.fn.extend({
@@ -75,17 +79,14 @@
                     if(selecter.settings.readonly == 1) {
                         addMarker(point, false);
 
-                        selectModalMap.removeEventListener("click");
+                        selectModalMap.removeEventListener("click", picker);
                         $(".map-header").html("");
                     } else {// has set button
                         addMarker(point, true);
 
                         var checkHtml = $(".map-header").html();
                         if(checkHtml == "") {
-                            selectModalMap.addEventListener("click", function(e) {
-                                addMarker(e.point, true);
-                                selectModalMap.panTo(e.point);
-                            });
+                            selectModalMap.addEventListener("click", picker);
 
                             var html = $("#map_select_template").html();
                             $(".map-header").html(_.template(html)({}));
