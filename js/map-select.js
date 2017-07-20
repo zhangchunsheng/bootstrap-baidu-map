@@ -168,7 +168,7 @@
                                 keyField: "area_name",
                                 effectiveFields: ["area_code", "area_name"],
                                 searchFields: ["area_code", "area_name"],
-                                effectiveFieldsAlias: {area_code: "地区编码", cn: "城市名称"},
+                                effectiveFieldsAlias: {area_code: "地区编码", area_name: "城市名称"},
                                 ignorecase: true,
                                 fnProcessData: function(result) {
                                     var value = [];
