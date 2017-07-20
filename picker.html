@@ -19,6 +19,27 @@
     <script src="./js/respond.min.js"></script>
     <![endif]-->
 	<style type="text/css">
+		.modal-map-dialog {
+			width: 900px;
+		}
+
+		.map-select {
+		    font-size: 10px;
+		}
+
+		.map-address {
+		    min-width: 200px;
+		}
+
+		.map-address-list {
+		    height: 400px;
+		    overflow: auto;
+		}
+
+		.map-address-list > li {
+		    list-style: none;
+		}
+		
 		.select-modal-map {
 		    width: 100%;
 		    height: 400px;
@@ -45,7 +66,14 @@
 		                <div class="row">
 		                    <div class="map-header"></div>
 		                    <div class="map-container" >
-		                        <div class="select-modal-map" id="select-modal-map"></div>
+		                        <div class="col-md-8">
+		                            <div class="select-modal-map" id="select-modal-map"></div>
+		                        </div>
+		                        <div class="col-md-4">
+		                            <div class="map-address-list">
+
+		                            </div>
+		                        </div>
 		                    </div>
 		                </div>
 		            </div>
@@ -55,9 +83,30 @@
 	</div>
 
 	<script type="text/template" id="map_select_template">
-	    <!--<input type="text" class="form-control map-address" placeholder="检索地点">
-	    <input type="button" class="btn btn-primary map-address-search" value="检索" />-->
-	    <input type="button" class="btn btn-primary set-map-location" value="设置坐标点" />
+	    <div class="form-inline">
+	        <div class="input-group">
+	            <input type="text" class="form-control map-city" placeholder="城市名称"/>
+	            <div class="input-group-btn">
+	                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	                    <span class="caret"></span>
+	                </button>
+	                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+	                </ul>
+	            </div>
+	            <!-- /btn-group -->
+	        </div>
+	        <input type="text" class="form-control map-address" placeholder="检索地点" />
+	        <input type="button" class="btn btn-primary map-address-search" value="检索" />
+	        <input type="button" class="btn btn-primary set-map-location" value="设置坐标点" />
+	        <div class="checkbox">
+	            <label>
+	                <input type="checkbox" class="map-marker-drag"/> 设置点是否可拖动
+	            </label>
+	            <label>
+	                <input type="checkbox" class="map-search-type" checked/> 当前地图检索
+	            </label>
+	        </div>
+	    </div>
 	</script>
 
 	<script src="https://api.map.baidu.com/api?v=2.0&s=1&ak=GGTQBCpsjlF8DUkmHGgxMXyV"></script>
@@ -65,6 +114,7 @@
     <script src="./js/jQuery/jQuery-2.1.4.min.js"></script>
 	<!-- Bootstrap 3.3.5 -->
 	<script src="./js/bootstrap/bootstrap.min.js"></script>
+	<script src="./js/bootstrap/bootstrap-suggest.js"></script>
 	<script src="./js/underscore.js"></script>
 	<script src="./js/map-select.js"></script>
 	<script type="text/javascript">

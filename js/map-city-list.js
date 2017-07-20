@@ -497,7 +497,7 @@ var MapCityList = window.MapCityList = MapCityList || {};
          * @example <b>参考示例：</b><br />
          * var myCityListObject = new MapCityList.CityList({container : "container"});
          */
-        MapCityList.CityList = function(opts){
+        MapCityList.CityList = function(opts) {
 
             opts = opts || {};
             /**
